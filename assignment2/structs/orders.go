@@ -1,17 +1,13 @@
 package structs
 
 type Orders struct {
-	orders       string
-	order_id     int
-	customerName string
-	ordered_at   string
+	CustomerName string  `json:"customerName" gorm:"column:customer_name"`
+	OrderAt      string  `json:"orderedAt" gorm:"column:ordered_at"`
+	Items        []Items `json:"items" gorm:"embedded"`
 }
 
-type OrdersBy struct {
-	items       string
-	itemID      int
-	itemCode    string
-	description string
-	quantity    int
-	order_id    int
+type Items struct {
+	ItemCode    string `json:"itemCode" gorm:"column:item_code"`
+	Description string `json:"description" gorm:"column:description"`
+	Quantity    int    `json:"quantity" gorm:"column:quantity"`
 }

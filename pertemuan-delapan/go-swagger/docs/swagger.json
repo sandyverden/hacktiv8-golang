@@ -1,0 +1,131 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample server for API Kampus Merdeka",
+        "title": "Kampus Merdeka API Docs",
+        "contact": {
+            "name": "sandyverden@gmail.com"
+        },
+        "version": "1.1"
+    },
+    "host": "localhost:8083",
+    "paths": {
+        "/orders": {
+            "get": {
+                "description": "Get all  order with input on payload",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "orders"
+                ],
+                "summary": "Get all order",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.Order"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Create new order with input on payload",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "orders"
+                ],
+                "summary": "Create a new order",
+                "parameters": [
+                    {
+                        "description": "Create Order",
+                        "name": "order",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/main.Order"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.Order"
+                        }
+                    }
+                }
+            }
+        },
+        "/orders/{orderId}": {
+            "get": {
+                "description": "Get all  order with input on payload",
+                "consumes": [
+                    "application/json"
+                ],
+                "tags": [
+                    "orders"
+                ],
+                "summary": "Get all order",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Id Order",
+                        "name": "orderId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/main.Order"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "main.Item": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "example": "Sepatu Nike"
+                },
+                "item_id": {
+                    "type": "string",
+                    "example": "123"
+                },
+                "quantity": {
+                    "type": "integer",
+                    "example": 1
+                }
+            }
+        },
+        "main.Order": {
+            "type": "object",
+            "properties": {
+                "customer_name": {
+                    "type": "string",
+                    "example": "Ali"
+                },
+                "items": {
+                    "$ref": "#/definitions/main.Item"
+                },
+                "order_at": {
+                    "type": "string",
+                    "example": "2006-01-02T15:04:05Z07:00"
+                },
+                "order_id": {
+                    "type": "string",
+                    "example": "ABC"
+                }
+            }
+        }
+    }
+}

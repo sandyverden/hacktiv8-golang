@@ -1,0 +1,2 @@
+curl -i -X POST localhost:8082/orders -d '{"orderedAt":"2019-11-09T21:21:46+00:00", "customerName": "Tom Jerry", 
+"item": [{"itemCode":"123", "description":"Iphone 10x", "quantity": 1}]}'
